@@ -3,7 +3,6 @@ import {
   LayoutDashboard, 
   Film, 
   List, 
-  MapPin, 
   MessageSquare, 
   HelpCircle,
   LogOut,

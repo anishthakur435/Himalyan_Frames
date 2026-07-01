@@ -96,6 +96,7 @@ const jsonLd = {
   priceRange: '$$'
 };
 
+import Script from "next/script";
 import { CSPostHogProvider } from "@/components/providers/posthog-provider";
 
 export default function RootLayout({
@@ -106,8 +107,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${cormorantGaramond.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <head>
-        <script
+        <Script
+          id="json-ld-local-business"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>

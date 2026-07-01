@@ -1,5 +1,6 @@
 "use client";
-import { Play, MapPin, Sparkles, Compass } from 'lucide-react';
+import Image from 'next/image';
+import { Play, MapPin } from 'lucide-react';
 import { Film } from '@/types';
 
 interface HeroProps {
@@ -31,11 +32,12 @@ export default function Hero({ onWatchShowreel }: HeroProps) {
     >
       {/* Background Image with Rich Shading and Grain */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1920"
           alt="Majestic Himalayan Peaks"
-          className="w-full h-full object-cover scale-102 transition-transform duration-[10s] ease-out select-none"
-          referrerPolicy="no-referrer"
+          fill
+          className="object-cover scale-102 transition-transform duration-[10s] ease-out select-none"
+          priority
         />
         {/* Cinematic atmospheric fog shading overlays */}
         <div className="absolute inset-0 bg-black/60 z-1" />

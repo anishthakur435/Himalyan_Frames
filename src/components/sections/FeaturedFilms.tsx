@@ -1,6 +1,8 @@
 "use client";
 import { useState } from 'react';
-import { Play, MapPin, Eye, Compass, Film as FilmIcon, Cpu } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Play, MapPin, Film as FilmIcon, Cpu } from 'lucide-react';
 import { FILMS } from '@/lib/data';
 import { Film } from '@/types';
 
@@ -62,7 +64,7 @@ export default function FeaturedFilms({ onSelectFilm }: FeaturedFilmsProps) {
 
         {/* Primary Film Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredFilms.map((film, index) => {
+          {filteredFilms.map((film) => {
             const isHovered = hoveredId === film.id;
             
             return (
@@ -79,13 +81,13 @@ export default function FeaturedFilms({ onSelectFilm }: FeaturedFilmsProps) {
                   onClick={() => onSelectFilm(film)}
                 >
                   {/* Image Backdrop */}
-                  <img
+                  <Image
                     src={film.coverUrl}
                     alt={film.title}
-                    className={`w-full h-full object-cover transition-transform duration-[1.2s] ease-out ${
+                    fill
+                    className={`object-cover transition-transform duration-[1.2s] ease-out ${
                       isHovered ? 'scale-108 blur-[2px]' : 'scale-100'
                     }`}
-                    referrerPolicy="no-referrer"
                   />
 
                   {/* Cinematic Viewfinder Focus Lines */}
@@ -143,9 +145,11 @@ export default function FeaturedFilms({ onSelectFilm }: FeaturedFilmsProps) {
                       <span>{film.location}</span>
                     </div>
 
-                    <h3 className="text-lg font-serif text-app-text group-hover:text-app-accent transition-colors">
-                      {film.title}
-                    </h3>
+                    <Link href={`/films/${film.id}`}>
+                      <h3 className="text-lg font-serif text-app-text group-hover:text-app-accent transition-colors">
+                        {film.title}
+                      </h3>
+                    </Link>
 
                     <p className="text-xs text-app-sec mt-3 leading-relaxed line-clamp-2">
                       {film.description}

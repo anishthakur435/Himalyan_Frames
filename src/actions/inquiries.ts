@@ -9,11 +9,18 @@ const inquirySchema = z.object({
   phone: z.string().optional(),
   message: z.string().min(10, "Please provide more details in your message"),
   source: z.string().optional(),
+  website: z.string().optional(), // honeypot field
 });
 
 export async function submitInquiry(data: z.infer<typeof inquirySchema>) {
   try {
     const validatedData = inquirySchema.parse(data);
+
+    // Honeypot check
+    if (validatedData.website) {
+      console.warn("Spam detected via honeypot");
+      return { success: true }; // Silently drop
+    }
 
     const supabase = await createClient();
 

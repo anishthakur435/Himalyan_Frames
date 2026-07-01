@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // Initialize the response
   let supabaseResponse = NextResponse.next({
     request,
@@ -20,7 +20,7 @@ export async function middleware(request: NextRequest) {
           // If cookies need to be updated, we must update both the
           // request and response objects so Server Components reading
           // cookies immediately after this get the updated values.
-          cookiesToSet.forEach(({ name, value, options }) =>
+          cookiesToSet.forEach(({ name, value }) =>
             request.cookies.set(name, value)
           );
           supabaseResponse = NextResponse.next({

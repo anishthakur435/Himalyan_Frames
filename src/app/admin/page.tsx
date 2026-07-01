@@ -3,7 +3,7 @@ import { MessageSquare, Film, List, Users } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function AdminDashboard() {
-  const supabase = await createClient();
+  await createClient();
   
   // In a real app we'd fetch actual counts here:
   // const { count: projectCount } = await supabase.from('projects').select('*', { count: 'exact', head: true });

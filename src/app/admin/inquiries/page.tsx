@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Eye, Mail, CheckCircle2 } from "lucide-react";
+import { Mail, Eye } from 'lucide-react';
 
 export default async function InquiriesCMS() {
   const supabase = await createClient();

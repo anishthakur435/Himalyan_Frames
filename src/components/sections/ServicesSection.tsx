@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import { Check, ClipboardList, ArrowUpRight, Flame, Plus, Minus, FileText, Sparkles, Building, Heart, MessageSquare } from 'lucide-react';
+import { Check, ClipboardList, ArrowUpRight, Flame, Plus, Minus, Sparkles, Building, Heart, MessageSquare } from 'lucide-react';
 import { SERVICES } from '@/lib/data';
 import { Service } from '@/types';
 

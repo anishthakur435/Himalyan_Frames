@@ -1,5 +1,6 @@
 "use client";
-import { ShieldCheck, Lock, UploadCloud, AlertCircle, Camera, Cpu, Sparkles, Check, Settings, Compass, HelpCircle } from 'lucide-react';
+import Image from 'next/image';
+import { ShieldCheck, Lock, UploadCloud, AlertCircle, Check, Compass } from 'lucide-react';
 import { FaInstagram } from 'react-icons/fa';
 
 export default function TestimonialsSection() {
@@ -171,11 +172,11 @@ export default function TestimonialsSection() {
                 className="group bg-app-surface border border-app-border/40 rounded-md overflow-hidden hover:border-app-accent/40 transition-colors"
               >
                 <div className="aspect-[3/2] overflow-hidden relative">
-                  <img 
+                  <Image 
                     src={bts.url} 
                     alt={bts.tag} 
-                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
+                    fill
+                    className="object-cover group-hover:scale-102 transition-transform duration-500"
                   />
                   <span className="absolute bottom-3 left-3 text-[9px] font-mono bg-black/60 text-app-accent px-2 py-0.5 rounded border border-app-accent/20 uppercase tracking-wider">
                     {bts.tag}
@@ -222,11 +223,11 @@ export default function TestimonialsSection() {
                 onClick={() => window.open('https://www.instagram.com/_dipps__/', '_blank')}
               >
                 <div className="aspect-square overflow-hidden relative">
-                  <img 
+                  <Image 
                     src={post.url} 
                     alt="Instagram Post" 
-                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
+                    fill
+                    className="object-cover group-hover:scale-102 transition-transform duration-500"
                   />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4 flex items-center justify-between text-white text-[10px] font-mono">
                     <span className="flex items-center gap-1 text-app-accent font-bold">

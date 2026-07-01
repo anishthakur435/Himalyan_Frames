@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
-import { Compass, MapPin, Feather, Landmark, CloudLightning, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import { Compass, MapPin, Feather, Landmark, ArrowRight } from 'lucide-react';
 import { SERVICE_AREAS } from '@/lib/data';
 
 export default function WhyDharamshala() {
@@ -121,11 +122,11 @@ export default function WhyDharamshala() {
                 {/* Descriptive card with tiny high-res visual placeholder */}
                 <div className="space-y-4">
                   <div className="relative aspect-[16/10] overflow-hidden rounded border border-app-border/40">
-                    <img
+                    <Image
                       src={areaImages[activeAreaIndex] || areaImages[0]}
                       alt={activeArea.name}
-                      className="w-full h-full object-cover scale-102"
-                      referrerPolicy="no-referrer"
+                      fill
+                      className="object-cover scale-102"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/10" />
                     <span className="absolute bottom-3 left-3 text-[10px] font-mono tracking-widest uppercase text-white bg-black/40 px-2 py-0.5 rounded">

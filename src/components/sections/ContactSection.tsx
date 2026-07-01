@@ -4,7 +4,7 @@ import { useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Phone, Mail, Send, MapPin, Check, Copy, Flame, Calendar, Camera, AlertCircle } from 'lucide-react';
+import { Phone, Mail, Send, MapPin, Check, Copy, Flame, Camera, AlertCircle } from 'lucide-react';
 import { FaInstagram } from 'react-icons/fa';
 import { submitInquiry } from '@/actions/inquiries';
 
@@ -129,6 +129,18 @@ export default function ContactSection() {
 
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-app-card rounded border border-app-border/50 text-app-accent shrink-0">
+                  <MapPin size={16} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-mono text-app-sec uppercase tracking-wider">Basecamp Location</p>
+                  <a href="https://maps.app.goo.gl/some-dharamshala-link" target="_blank" rel="noopener noreferrer" className="text-sm font-mono tracking-wide text-[#F4F2EE] hover:text-app-accent transition-colors block mt-0.5">
+                    Dharamshala, Himachal Pradesh, India
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-app-card rounded border border-app-border/50 text-app-accent shrink-0">
                   <Phone size={16} />
                 </div>
                 <div>
@@ -199,6 +211,17 @@ export default function ContactSection() {
                       disabled={isPending}
                     />
                     {errors.name && <p className="text-xs text-destructive font-mono mt-1">{errors.name.message}</p>}
+                  </div>
+
+                  <div className="hidden" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input
+                      id="website"
+                      type="text"
+                      {...register('website' as any)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
                   </div>
 
                   <div className="space-y-2">

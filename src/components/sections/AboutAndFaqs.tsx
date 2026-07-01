@@ -1,15 +1,14 @@
 "use client";
-import { useState } from 'react';
-import { ChevronDown, HelpCircle, Compass, Trees, Film, Mail } from 'lucide-react';
+import { HelpCircle, Trees, Film, Mail } from 'lucide-react';
 import { FAQS } from '@/lib/data';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function AboutAndFaqs() {
-  const [openFaqId, setOpenFaqId] = useState<string | null>('faq-1');
-
-  const toggleFaq = (id: string) => {
-    setOpenFaqId(openFaqId === id ? null : id);
-  };
-
   return (
     <section 
       id="about" 
@@ -75,47 +74,22 @@ export default function AboutAndFaqs() {
               </h3>
             </div>
 
-            <div className="space-y-4">
-              {FAQS.map((faq) => {
-                const isOpen = openFaqId === faq.id;
-                return (
-                  <div 
-                    key={faq.id}
-                    id={`faq-item-${faq.id}`}
-                    className="border-b border-app-border/30 pb-4 transition-all"
-                  >
-                    {/* Accordion trigger button */}
-                    <button
-                      id={`faq-trigger-${faq.id}`}
-                      onClick={() => toggleFaq(faq.id)}
-                      className="w-full flex items-start justify-between text-left py-2 hover:text-app-accent transition-colors group cursor-pointer"
-                    >
-                      <span className="text-sm font-sans font-medium text-[#F4F2EE] group-hover:text-app-accent transition-colors pr-4">
-                        {faq.question}
-                      </span>
-                      <ChevronDown 
-                        size={16} 
-                        className={`text-app-accent shrink-0 mt-1 transition-transform duration-350 ${
-                          isOpen ? 'rotate-180 text-app-accent' : ''
-                        }`} 
-                      />
-                    </button>
-
-                    {/* Collapsible drawer content */}
-                    <div
-                      id={`faq-content-${faq.id}`}
-                      className={`overflow-hidden transition-all duration-[450ms] ease-in-out ${
-                        isOpen ? 'max-h-[300px] opacity-100 mt-2.5' : 'max-h-0 opacity-0 pointer-events-none'
-                      }`}
-                    >
-                      <p className="text-xs sm:text-sm text-app-sec leading-relaxed pl-1">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            <Accordion defaultValue={["faq-1"]} className="w-full space-y-2">
+              {FAQS.map((faq) => (
+                <AccordionItem 
+                  key={faq.id} 
+                  value={faq.id}
+                  className="border-b border-app-border/30 pb-2"
+                >
+                  <AccordionTrigger className="text-left text-sm font-sans font-medium text-[#F4F2EE] hover:text-app-accent hover:no-underline transition-colors py-4">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-xs sm:text-sm text-app-sec leading-relaxed pt-2 pb-4">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
 
             {/* Micro Call-out card footer */}
             <div className="mt-8 pt-6 border-t border-app-border/20 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">

@@ -1,4 +1,4 @@
-const http = require('http');
+// e2e test script
 
 const routes = [
   '/',
